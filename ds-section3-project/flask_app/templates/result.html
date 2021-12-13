@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <title>낙동강 녹조 예측 시스템</title>
+  </head>
+  <body>
+    <div class="navbar navbar-dark bg-dark shadow-sm">
+      <div class="container">
+        <a href="#" class="navbar-brand d-flex align-items-center">
+          <strong>낙동강 녹조 예측 시스템</strong>
+        </a>
+      </div>
+    </div>
+    <section class="py-5 text-center container">
+      <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+          <h1 class="fw-light">낙동강 녹조 예측 시스템</h1>
+          <br>
+          <br>
+          <form action= "/result" method="POST">
+            <ul style="list-style-type: none;">
+              <div class="mb-3 row">
+                  <label for="inputPassword" class="col-sm-2 col-form-label">평균온도</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="tavg" value={{input.tavg}}>
+                  </div>
+                </div>
+              <div class="mb-3 row">
+                  <label for="inputPassword" class="col-sm-2 col-form-label">최저온도</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="tmin" value={{input.tmin}}>
+                  </div>  
+                </div>
+              <div class="mb-3 row">
+                  <label for="inputPassword" class="col-sm-2 col-form-label">최고온도</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="tmax" value={{input.tmax}}>
+                  </div>
+              </div>            
+              <div class="mb-3 row">
+                  <label for="inputPassword" class="col-sm-2 col-form-label">수온</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="wt" value={{input.wt}}>
+                  </div>
+              </div>
+              <div class="mb-3 row">
+                  <label for="inputPassword" class="col-sm-2 col-form-label">pH</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="pH" value={{input.pH}}>
+                  </div>
+              </div>
+              <div class="mb-3 row">
+                  <label for="inputPassword" class="col-sm-2 col-form-label">용존산소</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="DO" value={{input.DO}}>
+                  </div>
+              </div>
+              <div class="mb-3 row">
+                  <label for="inputPassword" class="col-sm-2 col-form-label">탁도</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="NTU" value={{input.NTU}}>
+                  </div>
+              </div>
+              <div class="mb-3 row">
+                  <label for="inputPassword" class="col-sm-2 col-form-label">Chl-a</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="chl-a" value={{input["chl-a"]}}>
+                  </div>
+              </div>
+              <div class="mb-3 row">
+                  <label for="inputPassword" class="col-sm-2 col-form-label">월</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="month" value={{input.month}}>
+                  </div>
+              </div>
+              <div class="col-auto">
+                  <button type="submit" class="btn btn-primary mb-3">예측</button>
+              </div>
+            </ul>
+          </form>
+        <strong>예상 녹조량(cells/mL) : {{result}}</strong>
+        <br></br>
+        <form action= "http://127.0.0.1:3000/dashboard/2-db" method="GET">
+            <ul style="list-style-type: none;">
+              <div class="col-auto">
+                  <button type="submit" class="btn btn-primary mb-3">분석</button>
+              </div>
+            </ul>
+        </form>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
